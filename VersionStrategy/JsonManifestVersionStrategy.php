@@ -30,7 +30,7 @@ class JsonManifestVersionStrategy implements VersionStrategyInterface
     /**
      * @param string $manifestPath Absolute path to the manifest file
      */
-    public function __construct(string $manifestPath)
+    public function __construct($manifestPath)
     {
         $this->manifestPath = $manifestPath;
     }
@@ -50,7 +50,7 @@ class JsonManifestVersionStrategy implements VersionStrategyInterface
         return $this->getManifestPath($path) ?: $path;
     }
 
-    private function getManifestPath(string $path): ?string
+    private function getManifestPath($path)
     {
         if (null === $this->manifestData) {
             if (!is_file($this->manifestPath)) {
