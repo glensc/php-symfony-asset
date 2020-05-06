@@ -40,12 +40,12 @@ class JsonManifestVersionStrategy implements VersionStrategyInterface
      * the version is. Instead, this returns the path to the
      * versioned file.
      */
-    public function getVersion(string $path)
+    public function getVersion($path)
     {
         return $this->applyVersion($path);
     }
 
-    public function applyVersion(string $path)
+    public function applyVersion($path)
     {
         return $this->getManifestPath($path) ?: $path;
     }
@@ -59,7 +59,7 @@ class JsonManifestVersionStrategy implements VersionStrategyInterface
 
             $this->manifestData = json_decode(file_get_contents($this->manifestPath), true);
             if (0 < json_last_error()) {
-                throw new \RuntimeException(sprintf('Error parsing JSON from asset manifest file "%s": '.json_last_error_msg(), $this->manifestPath));
+                throw new \RuntimeException(sprintf('Error parsing JSON from asset manifest file: '. $this->manifestPath));
             }
         }
 
